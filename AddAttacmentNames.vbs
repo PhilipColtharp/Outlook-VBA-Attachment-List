@@ -16,10 +16,14 @@ Public Sub AddAttachmentNames(oItem As MailItem)
     strAtt = "Message Attachments:" & vbCrLf
      
     For Each oAtt In oItem.Attachments
-      ' If oAtt.Size > 5200 Then
-        If oAtt.Type <> 6 Then _
+      Select Case (oAtt.Type)
+        Case 6
+          'Avoiding the error: "Outlook cannot perform this action on this type of attachment"
+          'OlAttachmentType enumeration, 6= "olOLE", attachment is an OLE document.
+          'https://docs.microsoft.com/en-us/office/vba/api/outlook.olattachmenttype
+        Case Else
           strAtt = strAtt & "  •  " & oAtt.FileName & vbCrLf
-      ' End If
+      End Select
     Next oAtt
         
   Else
