@@ -2,10 +2,10 @@
 Use a tag in your signatures to place a list of attachments when sending messages in Outlook.
 
 Thanks to:
-  Diane Poremsky, Slipstick Systems
-    https://www.slipstick.com/developer/code-samples/add-attachments-names-to-message-before-sending/
-  Datanumen
-    https://www.datanumen.com/blogs/batch-find-replace-text-multiple-outlook-emails/
+  * Diane Poremsky, Slipstick Systems
+    - https://www.slipstick.com/developer/code-samples/add-attachments-names-to-message-before-sending/
+  * Datanumen
+    - https://www.datanumen.com/blogs/batch-find-replace-text-multiple-outlook-emails/
 
 1. Add code the ThisOutlookSession 
 2. Intendend use: add the string "<attachment list>" to users Outlook e-mail signatures
