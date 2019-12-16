@@ -17,9 +17,9 @@ Public Sub AddAttachmentNames(oItem As MailItem)
      
     For Each oAtt In oItem.Attachments
       Select Case (oAtt.Type)
-        Case 6
+        Case olOLE
           'Avoiding the error: "Outlook cannot perform this action on this type of attachment"
-          'OlAttachmentType enumeration, 6= "olOLE", attachment is an OLE document.
+          'OlAttachmentType enumeration, olOLE=6, attachment is an OLE document.
           'https://docs.microsoft.com/en-us/office/vba/api/outlook.olattachmenttype
         Case Else
           strAtt = strAtt & "  •  " & oAtt.FileName & vbCrLf
