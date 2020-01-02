@@ -14,3 +14,5 @@ Instructions:
 3. Alternate use: mannualy put the string "```<attachment list>```" in an e-mail
 4. When e-mail is sent, the first occurance of the string  "```<attachment list>```" is replaced.  It is replaced by a list of e-mail attacments -or- it is replaced by nothing, if no attachments are present.
 
+*Does not work with OLE objects
+*Ignores file attacmentents that are in image elements in the message body.
