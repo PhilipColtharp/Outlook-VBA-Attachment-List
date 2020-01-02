@@ -19,8 +19,8 @@ Public Sub AddAttachmentNames(oItem As MailItem)
      If oItem.Attachments.Count > 0 Then
        HTMLImgSrc = getHTMLImgSrc(oItem)
      
-       strAtt = "Message Attachments:" & vbCrLf
-        
+       strAtt = ""
+       Count = 0
        For Each oAtt In oItem.Attachments
          Select Case (oAtt.Type)
            Case olOLE
@@ -28,10 +28,14 @@ Public Sub AddAttachmentNames(oItem As MailItem)
              'OlAttachmentType enumeration, olOLE=6, attachment is an OLE document.
              'https://docs.microsoft.com/en-us/office/vba/api/outlook.olattachmenttype
            Case Else
+             Count = Count + 1
              If IsFileAttachment(oAtt, HTMLImgSrc) _
                Then strAtt = strAtt & "  •  " & oAtt.FileName & vbCrLf
          End Select
        Next oAtt
+       
+       If Count > 0 _
+         Then strAtt = "Message Attachments:" & vbCrLf & strAtt
            
      Else
        strAtt = ""
