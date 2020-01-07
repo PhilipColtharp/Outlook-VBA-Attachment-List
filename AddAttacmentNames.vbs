@@ -28,9 +28,10 @@ Public Sub AddAttachmentNames(oItem As MailItem)
              'OlAttachmentType enumeration, olOLE=6, attachment is an OLE document.
              'https://docs.microsoft.com/en-us/office/vba/api/outlook.olattachmenttype
            Case Else
-             Count = Count + 1
-             If IsFileAttachment(oAtt, HTMLImgSrc) _
-               Then strAtt = strAtt & "  •  " & oAtt.FileName & vbCrLf
+             If IsFileAttachment(oAtt, HTMLImgSrc) Then
+               Count = Count + 1
+               strAtt = strAtt & "  •  " & oAtt.FileName & vbCrLf
+             End If
          End Select
        Next oAtt
        
