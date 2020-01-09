@@ -16,30 +16,29 @@ Public Sub AddAttachmentNames(oItem As MailItem)
 
   If oItem.BodyFormat = olFormatHTML Then
   
+     strAtt = ""
      If oItem.Attachments.Count > 0 Then
        HTMLImgSrc = getHTMLImgSrc(oItem)
      
-       strAtt = ""
-       Count = 0
+       ActualCount = 0
        For Each oAtt In oItem.Attachments
          Select Case (oAtt.Type)
            Case olOLE
              'Avoiding the error: "Outlook cannot perform this action on this type of attachment"
              'OlAttachmentType enumeration, olOLE=6, attachment is an OLE document.
              'https://docs.microsoft.com/en-us/office/vba/api/outlook.olattachmenttype
+             'This will effectively skip a file that the user may expect to be in attachmet list.
            Case Else
              If IsFileAttachment(oAtt, HTMLImgSrc) Then
-               Count = Count + 1
+               ActualCount = ActualCount + 1
                strAtt = strAtt & "  •  " & oAtt.FileName & vbCrLf
              End If
          End Select
        Next oAtt
        
-       If Count > 0 _
+       If ActualCount > 0 _
          Then strAtt = "Message Attachments:" & vbCrLf & strAtt
            
-     Else
-       strAtt = ""
      End If
     
      Set olInspector = Application.ActiveInspector()
