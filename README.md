@@ -13,7 +13,10 @@ Instructions:
 2. Intendend use: add the string "```<attachment list>```" to user's Outlook e-mail signatures
 3. Alternate use: mannualy put the string "```<attachment list>```" in an e-mail
 4. When e-mail is sent, the first occurance of the string  "```<attachment list>```" is replaced.  It is replaced by a list of e-mail attacments -or- it is replaced by nothing, if no attachments are present.
+5. To use Reply macros, first select (aka highlight) the e-mail in the folder with a left cick or keyboard, then use reply  from the ribbon or 
 
 *Does not work with OLE objects
 
 *Ignores file attacmentents that are in image elements in the message body.
+
+*Added Reply and Reply All versions of the macros.  These record the names of the attachments from the e-mail from which the the current e-mail was created via a Reply ro Replay all event. 
