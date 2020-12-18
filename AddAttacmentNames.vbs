@@ -142,11 +142,11 @@ Public Sub oItem_Reply(ByRef oItem As MailItem, Reply_All As Boolean)
     Get_Attachments_List oItem, Att_List, AttCount
     If AttCount > 0 Then
       Att_List = "<attachment list>" & _
-                    vbCrLf & vbCrLf & _
-                    "Attachments sent " & _
-                    Format(oItem.SentOn, "MM/dd/yy") & _
-                    Format(oItem.SentOn, "hh:mm AM/PM") & _
-                    vbCrLf & Att_List
+                    vbCr & _
+                    "Attachments from e-mail (" & _
+                    Format(oItem.SentOn, "MM/dd/yy") & " " & _
+                    Format(oItem.SentOn, "hh:mm AM/PM") & "):" & _
+                    vbCr & Att_List
      End If
    End If
    
@@ -166,5 +166,3 @@ Public Sub oItem_Reply(ByRef oItem As MailItem, Reply_All As Boolean)
   Set oItem = Nothing
       
 End Sub
-
-
