@@ -10,13 +10,13 @@ Thanks to:
 Instructions:
 1. Add code the ```ThisOutlookSession```.
 2. In Outlook options, check the "Open replies and forwards in a new window" checkbox.  See  [support.office.com - Article: Reply to or forward an email message](https://support.office.com/en-us/article/reply-to-or-forward-an-email-message-a843f8d3-01b0-48da-96f5-a71f70d0d7c8), FAQ: Can I have all replies and forwards open in a new window?
-2. Intendend use: add the string "```<attachment list>```" to user's Outlook e-mail signatures
+2. Intended use: add the string "```<attachment list>```" to user's Outlook e-mail signatures
 3. Alternate use: mannualy put the string "```<attachment list>```" in an e-mail
 4. When e-mail is sent, the first occurance of the string  "```<attachment list>```" is replaced.  It is replaced by a list of e-mail attacments -or- it is replaced by nothing, if no attachments are present.
-5. To use Reply macros, first select (aka highlight) the e-mail in the folder with a left cick or keyboard, then use reply  from the ribbon or 
+5. To use the Reply versions of these macros from a folder one must first select (highlight) the e-mail in the folder with a left cick or keyboard, then, in a separate mouse click, use reply from the ribbon or reply from e-mail.  Otherwise, use reply or forward buttons from the e-mail window.
 
 *Does not work with OLE objects
 
-*Ignores file attacmentents that are in image elements in the message body.
+*Ignores file attacmentents that are in image elements in the message body. (or tries too)
 
 *Added Reply and Reply All versions of the macros.  These record the names of the attachments from the e-mail from which the the current e-mail was created via a Reply ro Replay all event. 
