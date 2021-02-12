@@ -44,46 +44,47 @@ Public Sub AssertSignatureFormat(oItem As MailItem)
       Text = regEx.replace(wdParagraph.Range.Text, strReplace)
       'If MsgBoxReturns <> vbCancel _
          Then MsgBoxReturns = MsgBox("""" + Text + """", vbOKCancel)
-        
-      With wdParagraph.Range.Font
-        Select Case (True)
-          Case bsc(Text, "PhilipColtharp")
-            'Signature_Name Style
-            .Name = "Calibri"
-            .Bold = True
-            .Italic = False
-            .Size = 12
-            LineCount = 1
-          End Select
-          If LineCount > 0 Then
-            Select Case (True)
-              Case (bsc(Text, "GovernmentOperationsConsultantII") Or _
-                    bsc(Text, "Office8507173646") Or _
-                    bsc(Text, "Fax8504881967") _
-                   ) And LineCount
-                'Sig_Contanct Style
-                .Name = "Calibri"
-                .Bold = False
-                .Italic = False
-                .Size = 11
-              Case (bsc(Text, "InspiringSuccessbyTransformingOneLifeataTime") _
-                   ) And LineCount
-                'Sig_Contanct Style
-                .Name = "Arial"
-                .Bold = True
-                .Italic = True
-                .Size = 11
-              Case (bsc(Text, "CONFIDENTIALITYPUBLICRECORDSNOTICE:") _
-                   ) And LineCount
-                'Sig_Note Style
-                .Name = "Calibri"
-                .Bold = True
-                .Italic = False
-                .Size = 9
-              Case Else
+      If Len(Text) > 12 Then
+        With wdParagraph.Range.Font
+          Select Case (True)
+            Case bsc(Text, "PhilipColtharp")
+              'Signature_Name Style
+              .Name = "Calibri"
+              .Bold = True
+              .Italic = False
+              .Size = 12
+              LineCount = 1
             End Select
-          End If
-      End With
+            If LineCount > 0 Then
+              Select Case (True)
+                Case (bsc(Text, "GovernmentOpe") Or _
+                      bsc(Text, "Office8507173") Or _
+                      bsc(Text, "Fax8504881967") _
+                     ) And LineCount
+                  'Sig_Contanct Style
+                  .Name = "Calibri"
+                  .Bold = False
+                  .Italic = False
+                  .Size = 11
+                Case (bsc(Text, "InspiringSucc") _
+                     ) And LineCount
+                  'Sig_Contanct Style
+                  .Name = "Arial"
+                  .Bold = True
+                  .Italic = True
+                  .Size = 11
+                Case (bsc(Text, "CONFIDENTIALI") _
+                     ) And LineCount
+                  'Sig_Note Style
+                  .Name = "Calibri"
+                  .Bold = True
+                  .Italic = False
+                  .Size = 9
+                Case Else
+              End Select
+            End If
+        End With
+      End If
       Select Case (LineCount)
         Case Is > 15
           LineCount = 0
@@ -94,7 +95,7 @@ Public Sub AssertSignatureFormat(oItem As MailItem)
     Next
 End Sub
 
-Private Function bsc(leeft As String, reight As String)  'Bountded String Compare
+Private Function bsc(leeft As String, reight As String)  'Bounded String Compare
   l = min(Len(leeft), Len(reight))
   bsc = (Left(leeft, l) = Left(reight, l))
 End Function
